@@ -8,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class FirstcompComponent implements OnInit {
 
   constructor() { }
-
+  
   ngOnInit(): void {
   }
+
+  
 
 }

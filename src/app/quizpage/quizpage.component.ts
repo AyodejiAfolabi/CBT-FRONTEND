@@ -50,6 +50,9 @@ this.updateLatestQuestion()
 
   },100) 
  
+  if(JSON.parse(localStorage['donetest'])){
+    this.route.navigate(['/'])
+  }
 
   }
 
@@ -178,6 +181,7 @@ for ( var x in   studentInfo.answers){
 }
 studentInfo.totalScore=totalScore
 localStorage.setItem('studentInfo',JSON.stringify(studentInfo))
+localStorage.setItem('donetest',JSON.stringify(true))
 this.route.navigate(['/myresult'])
 
   

@@ -97,7 +97,6 @@ this.firstservice.addquestion(data).subscribe((data:any)=>{
     alert('succesful')
 this.allquestions.push(data)
 this.clearInputs()
-// this.viewquestion=true
   }
 
 })
@@ -179,7 +178,7 @@ quizSettings(){
 let data={time:this.time,length:this.questionLength}
 this.firstservice.addsetting(data).subscribe((response:any)=>{
 if(response.response){
-alert('Operation Succesful')
+alert('Operation Succesful, press close')
 }
 })
 }

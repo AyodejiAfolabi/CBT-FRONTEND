@@ -23,6 +23,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatBadgeModule} from '@angular/material/badge';
 // import {MatIconModule} from '@angular/material/icon';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 // import { MatIconModule } from '@angular/material/icon';
 @NgModule({
@@ -48,7 +49,8 @@ MatTooltipModule,
 MatStepperModule,
 MatCardModule,
 MatSlideToggleModule,
-MatBadgeModule
+MatBadgeModule,
+
   ],
   exports:[
     MatButtonModule,

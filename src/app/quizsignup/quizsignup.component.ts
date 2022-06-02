@@ -25,6 +25,8 @@ export class QuizsignupComponent implements OnInit {
 
     localStorage.removeItem('studentInfo')
     localStorage.removeItem('questionxyz')
+    localStorage.removeItem('donetest')
+
 
   }
 

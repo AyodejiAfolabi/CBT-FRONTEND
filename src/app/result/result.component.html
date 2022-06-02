@@ -1,14 +1,15 @@
 
 <div style="margin-top:200px; height: 600px;" class="container">
 <div class="row">
-    <div class="col-8 text-center bg-white">
+    <div class="col-12 text-center bg-white">
 <h2 class="text-center text-danger">SUBMITED!!!!</h2>
 <br><br>
         <div style="float:left;">
-        <h3 class="text-center"> Dear <b>{{studentName}}</b>, your score is <b> {{score}}/{{questionLength}} </b></h3>
+            <h4>This page will automatically redirect to the Login Menu in {{routetime}} seconds</h4>
+        <h3 class="text-center"> Dear <b class="text-uppercase">{{studentName}}</b>,  your score is <b> {{score}} /  {{questionLength}} </b></h3>
         <h3 class="text-center">PERCENTAGE: {{(score/questionLength*100).toFixed(1)}}%</h3>
     </div> 
-    <button class="btn btn-success" (click)="goHome()">HOME</button>
+    <button class="btn btn-success" (click)="goHome()">GO BACK TO LOGIN</button>
     </div>
 
 </div>

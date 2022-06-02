@@ -11,6 +11,8 @@ export class ResultComponent implements OnInit {
 public score:any
 public questionLength:any
 public studentName:any
+public routetime:any=8
+
 
 
   constructor(public firstservice:FirstserviceService,public router: Router) { }
@@ -20,9 +22,13 @@ public studentName:any
     this.getScore()
     setTimeout(
       ()=>{
-this.goHome()      
-      },5000)
-    
+// this.goHome()      
+      },8000)
+
+      setInterval(
+        ()=>{
+  this.setRouteTime()      
+        },1000)
     }
 
   goHome(){
@@ -44,6 +50,9 @@ getScore(){
 
     this.firstservice.submitResult(data).subscribe(data=>{
     })
+}
+setRouteTime(){
+  this.routetime-=1
 }
 
 }
