@@ -1,0 +1,34 @@
+
+
+<div class="container-fluid row container-div">
+
+    <div class="col-md-7 bg-white question-div">
+ <h5 style="float:right;">Time {{minute}}:{{seconds}}</h5>
+ <div style="clear:both;"></div>
+<h5>{{start+1}})</h5>
+
+<h4 [innerHTML]="presentQuestion.question" ></h4>
+
+<div *ngFor="let i=index; let each of presentQuestion.answers" >
+
+
+
+    <div class="input-group mb-3 answer-div">
+        <span class="input-group-text bg-dark" ><i class="text-white">{{options[i]}}</i></span>
+        <div class="answer-div h3" [class.answer]="i==presentQuestion.chosen"  [class.bg-success]="i==presentQuestion.chosen" (click)="chose(i)" [innerHTML]="each.option" class="form-control" readonly></div>
+       
+    </div>
+  
+</div>
+
+<button [hidden]="start==0" (click)="prev()" class="btn btn-danger">Prev</button>
+<button [hidden]="start>=questionxyz.length-1"  (click)="next()" class="btn btn-success mx-3">Next</button>
+
+<button [hidden]="start<questionxyz.length-1"  (click)="submit()" class="btn btn-warning mx-3">Submit</button>
+    </div>
+
+
+
+
+
+</div>

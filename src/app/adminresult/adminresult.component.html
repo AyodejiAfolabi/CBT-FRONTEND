@@ -1,0 +1,23 @@
+<div class="container-fluid row bg-white">
+    <h1>STUDENTS RESULTS / INFORMATION</h1>
+<table class="table table-bordered bg-white big-table">
+<thead>
+<tr>
+<td>Full Name</td>
+<td>Email</td>
+<td>Score</td>
+<td class="text-center">Passwords <span></span><i (click)="seepassword()" style="cursor:pointer;" class="fa fa-eye"></i></td>
+</tr>
+</thead>
+<tbody>
+    <tr *ngFor="let i=index; let each of allResults" >
+<td>{{each.studentName}}</td>
+<td>{{each.email}}</td>
+<td>{{each.score}} / {{totalQuestion}}</td>
+<input  [type]="viewpassword" class="w-250 form-control input text-center" readonly [value]="each.password"/>
+    </tr>
+
+</tbody>
+
+</table>
+</div>

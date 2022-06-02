@@ -1,0 +1,132 @@
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" style="font-size:30px;">ADMIN</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item" style="cursor:pointer;">
+            <a class="nav-link" (click)="reload()" >Add Question</a>
+          </li>
+          <li class="nav-item" style="cursor:pointer;">
+            <a class="nav-link" (click)="viewresults()" >View Results</a>
+          </li>
+          <li class="nav-item" data-bs-toggle="modal" data-bs-target="#myModal" style="cursor:pointer;">
+            <a class="nav-link" >Settings</a>
+          </li>
+          
+        </ul>
+    
+      </div>
+    </div>
+  </nav>
+  <div class="modal" id="myModal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">CBT TEST SETTINGS</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+      Time in min:<input  [(ngModel)]="time" class="form-control"/><br>
+      Number of questions :<input [(ngModel)]="questionLength" class="form-control"/>
+      <button (click)="quizSettings()" class="form-control my-3 btn btn-success" mat-raised-button color="warn">GO</button>
+
+
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  
+<div mat-dialog-content>
+
+  <div class="row p-2">
+    <div class="col-12">
+      
+    </div>
+    <form [formGroup]="questionInfo" class="col-12">
+        <angular-editor formControlName="question" placeholder="Question"></angular-editor>
+    </form>
+  </div>
+
+  <div class="container-fluid row ">
+
+    <div class="col-6">
+<form [formGroup]="questionInfo" class="row">
+    <div class="col-md-6">
+      <angular-editor formControlName="optionA" placeholder="Option A" ></angular-editor>
+    </div>
+    <div class="col-md-6">
+      <angular-editor formControlName="optionB" placeholder="Option B" ></angular-editor>
+    </div>
+    <div class="col-md-6">
+      <angular-editor formControlName="optionC" placeholder="Option C" ></angular-editor>
+    </div>
+    <div class="col-md-6">
+        <angular-editor formControlName="optionD" placeholder="Option D"></angular-editor>
+      </div>
+     
+
+    </form>
+</div>
+
+<div class="col-6 bg-white">
+<h1  class="text-center">PREVIEW QUESTION</h1>
+<div>
+
+
+<h4 [innerHTML]="question" ></h4>
+
+<span [hidden]="hideinstruction" class="text-danger">Please select the correct option</span>
+<div *ngFor="let i=index; let each of answerArray" >
+
+
+
+
+    <div class="input-group mb-3 answer-div">
+        <span class="input-group-text bg-dark" [class.answer]="i==chooseoption"  [class.bg-warning]="i==chooseoption" ><i class="text-white">{{options[i]}}</i></span>
+        <div class="answer-div" [class.answer]="i==chooseoption"  [class.bg-warning]="i==chooseoption" (click)="chose(i)" [innerHTML]="each.option" class="form-control" readonly></div>
+       
+    </div>
+  
+</div>
+<div>
+    <button [disabled]="!releaseSaveButton" [hidden]="hideinstruction" (click)="save()"class="btn btn-success">Save to Database <i class="fa fa-save"></i></button>
+</div>
+
+<div [hidden]="viewquestion">
+    <button (click)="deleteQuestion()" class="btn btn-danger">Delete</button>
+    <button [hidden]="!deletesave" (click)="editQuestion()"  class="btn btn-primary mx-4">Edit</button>
+    <button [hidden]="deletesave" (click)="saveEdited()"  class="btn btn-primary mx-4">Save Updated</button>
+
+</div>
+
+<div style="margin-top:50%;" >
+  <h4>ALL QUESTIONS</h4>
+<button class="rounded-circle bg-success mx-1 border-0 text-white" style="cursor:pointer;" (click)="seeQuestion(i)" *ngFor="let i=index; let each of allquestions" >{{i+1}}</button>
+
+</div>
+
+</div>
+</div>
+</div>
+  
+<div class="col-6" mat-dialog-actions>
+<div class="row">
+  <button style="background-color:#F89920;" class="btn mx-4 col-4" mat-button >Reset</button>
+  <button  style="background-color:#3E5EAB;" (click)="submit()" class="btn btn-primary mx-5 col-4"mat-button  cdkFocusInitial >Preview</button>
+</div>
+</div>
